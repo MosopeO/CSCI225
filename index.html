@@ -32,6 +32,8 @@
                 will graduate in december 2021.
             </p>
             <img width="250" height="250" src="img/website-under-construction.png" alt="">
+            <h3>Video</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_MMga99JDxI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="Assignment"> <a id="Assignment"></a>
@@ -39,6 +41,7 @@
             <ul>
                 <li><a href="Assignments/Assignment1.pdf"> <b> Assignment 1 </b> </a> </li>
             </ul>
+            <a href="ContactMe.html">Contact Me</a>
         </div>
 
         <div class="Portfolio"> <a id="Portfolio"></a>
@@ -66,6 +69,42 @@
             <p>
                 Email: <a href="mailTo:onifadem@usca.edu">Onifadem@usca.edu</a>
             </p>
+
+            <fieldset>
+                <legend> <b>Let us know if you have any feedback </b> </legend>
+                <label for="fname">First name: </label>  
+                <input type="text" id="fname" placeholder="fname" name="fname" >
+                <label for="lname"> Last name: </label>
+                <input type="text" id="lname" placeholder="lname" name="lname">
+                <label for="email">Email: </label> 
+                <input type="email" id="email" placeholder="name@domain.com" name="email">
+                
+                <p>
+                    Would you recommend this website?
+                    <input type="checkbox" name="Yes" > Yes
+                    <input type="checkbox" name="No"> No
+                    <br>
+
+                    What is your favorite browser?
+                    <select name="favbrowser" id="favbrowser">
+                        <option value="chrome">Google Chrome</option>
+                        <option value="firefox">Firefox</option>
+                        <option value="IE">Internet Explorer</option>
+                        <option value="edge">Microsoft edge</option>
+                        <option value="bing">Bing</option>
+                    </select>
+
+                    <br>
+                    Rate this website on a scale of 1-10
+                    <input type="range" name="rating" min="1" max="10">
+
+                    <br>
+                    Comments
+                    <textarea name="comment" id="comment" cols="30" rows="1"></textarea>
+                </p>
+
+                <input type="submit" name="submit" value="Submit">
+            </fieldset>
         </div>
 
         <div class="Schedule"> <a id="Schedule"></a>
@@ -104,7 +143,6 @@
                 </tr>
                 <tr>
                     <td>3:00 - 5:00</td>
-                    <td> </td>
                     <td> </td>
                     <td>Art<td>
                     <td>web design</td>
