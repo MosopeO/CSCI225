@@ -1,1 +1,108 @@
+div.navbar{
+    background-color:rgb(225, 243, 237);
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+div.navbar ul{
+    display: inline-block;
+}
+
+div.navbar li{
+    float: left;
+    display: inline;
+}
+
+div.navbar li a{
+    display:block;
+    font-weight: bold;
+    padding: 8px 10px;
+    text-decoration: none;
+    float: right;
+    color: black;
+}
+
+div.navbar li a:hover {
+    background-color: rgb(182, 200, 238);
+}
+
+h1{
+    color: black;
+    cursor: pointer;
+    width: 30%;
+    padding: 3%;
+    right: 60%;
+}
+
+h1:hover{
+    background-color: rgb(210, 245, 245);
+}
+
+/* Introduction */
+div.intro {
+    display: none;
+    background-color: hsla(0, 9%, 15%, 0.234);
+    padding: 5%;
+    left: 30%;
+}
+
+div.introduction h1:hover + div.intro{
+    display: block;
+    color: black;
+    font: 10px;
+    position: absolute;
+    top: 30%;
+}
+
+/* Assignemnt */
+div.Assignment ul{
+    display: none;
+    background-color: hsla(109, 10%, 30%, 0.172);
+    padding: 5%;
+    left: 30%;
+}
+
+
+div.Assignment h1:hover + ul {
+    display: block;
+    color: black;
+    font: 10px;
+    position: absolute;
+    top: 30%;
+}
+
+/* Portfolio */
+div.Portfolio ul{
+    display: none;
+    background-color: hsla(109, 13%, 25%, 0.172);
+    padding: 5%;
+    left: 30%;
+}
+
+div.Portfolio h1:hover + ul {
+    display: block;
+    color: black;
+    font: 10px;
+    position: absolute;
+    top: 30%;
+}
+
+/* Contact Information 
+div.contactinfo {
+    display: none;
+    background-color: hsla(0, 9%, 15%, 0.234);
+    padding: 5%;
+    left: 30%;
+}
+
+div.introduction h1:hover + div.contactinfo{
+    display: block;
+    color: black;
+    font: 10px;
+    position: absolute;
+    top: 30%;
+}
+*/
 
