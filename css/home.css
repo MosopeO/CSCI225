@@ -1,13 +1,81 @@
+p{
+    font-family: "Roboto", verdana, arial, sans-serif;
+    line-height: normal;
+    text-align: center;
+}
+
+p::first-letter{
+    font-size: 25px;
+}
+
+li{
+    color: rgb(37, 63, 42);
+    font-weight: 100;
+    list-style: none;
+}
+
+li::before{
+    content: ' ';
+    background-image: url("../img/among\ us_icon.png");
+    height: 33px;
+    width: 33px;
+    display: inline-block;
+}
+
+body{
+    background-image: url("../img/bck.jpg");
+}
+
+h1{
+    color: black;
+    cursor: pointer;
+    font-size: 100%;
+    padding: 3px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 10px;
+    transition: color 2s ease;
+    text-shadow: 0.5em 0.5em 0.5em rgb(255, 255, 255);
+}
+
+h1:hover{
+    background-color: hsla(143, 83%, 14%, 0.234);
+    transform: scale(1.5);
+	transition: ease-in 2s;
+    color: #fff;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+/*navigation bar*/
 div.navbar{
-    background-color:rgb(225, 243, 237);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: hsla(133, 80%, 16%, 0.432);
     list-style-type: none;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
+}
+
+div.navbar img{
+    padding: 5px;
 }
 
 div.navbar ul{
     display: inline-block;
+    position: fixed;
+    right: 20px;
 }
 
 div.navbar li{
@@ -19,90 +87,176 @@ div.navbar li a{
     display:block;
     font-weight: bold;
     padding: 8px 10px;
-    text-decoration: none;
     float: right;
-    color: black;
+    color: white;
+    border-radius: 10px;    
 }
+
 
 div.navbar li a:hover {
-    background-color: rgb(182, 200, 238);
+    background-color: hsla(154, 37%, 22%, 0.234);
+    transform: skew(10deg);
 }
 
-h1{
-    color: black;
-    cursor: pointer;
-    width: 30%;
-    padding: 3%;
-    right: 60%;
-}
 
-h1:hover{
-    background-color: rgb(210, 245, 245);
+div.wrapper{
+    /*background: url("../img/Mosope\ Onifade.png");*/
+    top:50px;
 }
 
 /* Introduction */
+div.introduction h1{
+    width: 17%;
+    top: 100px;
+    right: 80%;
+    position: fixed;
+}
+
 div.intro {
     display: none;
-    background-color: hsla(0, 9%, 15%, 0.234);
-    padding: 5%;
-    left: 30%;
+    background-color: hsla(109, 13%, 25%, 0.172);
+    padding: 3%;
+    left: 23%;
+    right: 23%;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
 }
 
 div.introduction h1:hover + div.intro{
     display: block;
-    color: black;
-    font: 10px;
-    position: absolute;
-    top: 30%;
 }
 
 /* Assignemnt */
+div.Assignment h1{
+    width: 17%;
+    top: 100px;
+    left: 80%;
+    position: fixed;
+}
+
 div.Assignment ul{
     display: none;
-    background-color: hsla(109, 10%, 30%, 0.172);
+    background-color: hsla(109, 13%, 25%, 0.172);
     padding: 5%;
-    left: 30%;
+    left: 23%;
+    right: 23%;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
 }
 
 
 div.Assignment h1:hover + ul {
     display: block;
-    color: black;
-    font: 10px;
-    position: absolute;
-    top: 30%;
 }
 
 /* Portfolio */
+div.Portfolio h1{
+    width: 15%;
+    top: 200px;
+    right: 80%;
+    position: fixed;
+}
+
 div.Portfolio ul{
     display: none;
     background-color: hsla(109, 13%, 25%, 0.172);
     padding: 5%;
-    left: 30%;
+    left: 23%;
+    right: 23%;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    border-right: 5px solid #fff;
+    border-bottom: 3px solid #fff;
+}
+
+div.Portfolio li:first-child{
+    box-shadow: 5px 10px rgba(253, 255, 237, 0.521);
 }
 
 div.Portfolio h1:hover + ul {
     display: block;
-    color: black;
-    font: 10px;
-    position: absolute;
-    top: 30%;
 }
 
-/* Contact Information 
+/*Contact Information */
+div.Contact h1{
+    margin:auto;
+    width: 17%;
+    left: 80%;
+    top: 200px;
+    position: fixed;
+}
 div.contactinfo {
     display: none;
-    background-color: hsla(0, 9%, 15%, 0.234);
+    background-color: hsla(109, 13%, 25%, 0.172);
     padding: 5%;
-    left: 30%;
+    left: 23%;
+    right: 23%;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
 }
 
-div.introduction h1:hover + div.contactinfo{
+div.Contact h1:hover + div.contactinfo{
+    display: inline-block;
+}
+
+/*Shedule */
+div.Schedule h1{
+    width: 15%;
+    top: 300px;
+    right: 80%;
+    position: fixed;
+}
+
+table {
+    display: none;
+    background-color: hsla(109, 13%, 25%, 0.172);
+    padding: 5%;
+    left: 23%;
+    right: 23%;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+}
+
+td{
+    padding: 5px;
+}
+
+thead{
+    background-color: rgb(196, 252, 233);
+}
+
+table, th, td{
+    border: 1px solid white;
+    vertical-align: middle;
+    empty-cells: hide;
+}
+
+tr:nth-child(even){
+    background-color: rgb(196, 252, 233);
+}
+
+div.Schedule h1:hover + table{
     display: block;
-    color: black;
-    font: 10px;
-    position: absolute;
-    top: 30%;
 }
-*/
 
+.contactinfo, table{
+    border-right: 5px solid #fff;
+    border-bottom: 3px solid #fff;
+}
+
+/*Footer*/
+footer{
+    position: fixed;
+    font-size: 10px;
+    top: 94%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*background-color: hsla(133, 79%, 17%, 0.171);*/
+    background-image: linear-gradient(rgba(127, 161, 117, 0.329), rgba(255, 255, 255, 0.507));
+}
