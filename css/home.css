@@ -187,6 +187,7 @@ div.Contact h1{
     left: 80%;
     top: 200px;
     position: fixed;
+    cursor: pointer;
 }
 div.contactinfo {
     display: none;
@@ -199,8 +200,8 @@ div.contactinfo {
     bottom: 10%;
 }
 
-div.Contact h1:hover + div.contactinfo{
-    display: inline-block;
+div.Contact h1:hover + .contactinfo{
+    display: block;
 }
 
 /*Shedule */

@@ -25,12 +25,11 @@
     <div class="pt-5 container">
         <!--Row 1 (video and form)-->
         <div class="row">
-            <div class="col-6">
-                <div class="embed-responsive embed-responsive-16by9 border border-danger">
+            <div class="col-6 ">
+                <div class="embed-responsive embed-responsive-16by9 ">
                     <iframe src="https://www.youtube.com/embed/AG0ASv4fLS4" title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-
+                        allowfullscreen class="rounded"></iframe>
                 </div>
             </div>
 
@@ -93,7 +92,13 @@
                         <textarea class="form-control" id="comments" rows="1" cols="15"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                     <button type="submit" class="btn btn-primary" onclick="thanks();">Submit</button>
+
+                     <script>
+                        function thanks(){
+                            document.write("Thank you for your feedback!")
+                        }
+                     </script>
                 </form>
             </div>
         </div>
