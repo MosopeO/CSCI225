@@ -10,7 +10,6 @@
 <body>
     <div class="wrapper"> <a id="wrapper"></a>
         <div class="navbar">
-            <!---<em> Navigation bar </em> -->
             <img src="img/Mosope Onifade.png" alt="logo" height="40px" width="75px">
             <ul>
                 <li> <a href="#Introduction">Introduction</a> </li>
@@ -19,16 +18,12 @@
                 <li> <a href="#Contact"> Contact Info</a> </li>
             </ul>
 
-            <!---
-            <ul>
-                <li> <a href="https://usca.edu"> USCA Homepage</a> </li>
-                <li> <a href="https://amazon.com"> Amazon </a></li>
-            </ul>
-            -->
         </div>
 
         <div class="introduction"> <a id="Introduction"></a>
-            <h1>Introduction</h1>
+            <label for="introToggle"><h1>Introduction</h1></label>
+            <input type="checkbox" id="introToggle" class="visually-hidden">
+
             <div class="intro"> <a id="intro"></a>
                 <p>Hi and welcome to my personal website! My name is Mosope Onifade and I am an aspiring
                     cyber security specialist. My goal is to work as a tier 3 security analyst in
@@ -44,36 +39,46 @@
             
         </div>
 
-        <div class="Assignment"> <a id="Assignment"></a>
-            <h1>  Assignment </h1>
-            <ul>
-                <li><a href="Assignments/Assignment1.pdf"> <b> Assignment 1 </b> </a> </li>
-            </ul>
-           
+        <div class="assignment"> <a id="assignment"></a>
+            <label for="hwToggle"><h1>  Assignment </h1></label>
+            <input type="checkbox" id="hwToggle" class="visually-hidden">
+
+            <div class="hw"> <a id="hw"></a>
+                <ul>
+                    <li><a href="Assignments/Assignment1.pdf"> <b> Assignment 1 </b> </a> </li>
+                    <li><a href="bmi.html"> BMI Calculator</a></li>
+                </ul>
+            </div>   
         </div>
 
-        <div class="Portfolio"> <a id="Portfolio"></a>
-            <h1>Portfolio</h1>
-            <ul>
-                <li> <b>Flight planner</b>: this was a software engineerig project. It is writtent in Java.
-                    The flight planner is a platfrom for users to enter their current locaiton
-                    and destination and be provided with a flight plan for their trip.
-                </li>
-                <li> <b>Security plan for an organization</b>: This project was for the calss intro to cyber security.
-                    The project was to create a plan for a compnay to keep their infromation secure.
-                    This included best practices that the organization could adapt to ensure their security.
-                </li>
-                <li> <b>Privacy of User informaiton on the Internet</b>: this was a project for ethics and professional
-                    issues.
-                    This was a research project that covered how users use the internet and helping users
-                    understand that the internet is not a secure place an they have to be caustions and take
-                    security measures when using the internet.
-                </li>
-            </ul>
+        <div class="portfolio"> <a id="portfolio"></a>
+            <label for="portfolioToggle"><h1>Portfolio</h1></label>
+            <input type="checkbox" id="portfolioToggle" class="visually-hidden">
+
+            <div class="portfolioBody"> <a id="portfolioBody"></a>
+                <ul>
+                    <li> <b>Flight planner</b>: this was a software engineerig project. It is writtent in Java.
+                        The flight planner is a platfrom for users to enter their current locaiton
+                        and destination and be provided with a flight plan for their trip.
+                    </li>
+                    <li> <b>Security plan for an organization</b>: This project was for the calss intro to cyber security.
+                        The project was to create a plan for a compnay to keep their infromation secure.
+                        This included best practices that the organization could adapt to ensure their security.
+                    </li>
+                    <li> <b>Privacy of User informaiton on the Internet</b>: this was a project for ethics and professional
+                        issues.
+                        This was a research project that covered how users use the internet and helping users
+                        understand that the internet is not a secure place an they have to be caustions and take
+                        security measures when using the internet.
+                    </li>
+                </ul>
+            </div>            
         </div>
 
-        <div class="Contact"> <a id="Contact"></a>
-            <h1> Contact Information </h1>
+        <div class="contact"> <a id="contact"></a>
+            <label for="contactToggle"><h1> Contact Information </h1></label>
+            <input type="checkbox" id="contactToggle" class="visually-hidden">
+
             <div class="contactinfo"> <a id="contactinfo"></a>
                 <p>
                     Email: <a href="mailTo:onifadem@usca.edu">Onifadem@usca.edu</a>

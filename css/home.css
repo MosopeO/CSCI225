@@ -33,16 +33,15 @@ h1{
     padding: 3px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-align: center;
     border-radius: 10px;
-    transition: color 2s ease;
-    text-shadow: 0.5em 0.5em 0.5em rgb(255, 255, 255);
+    /*transition: color 2s ease;
+    text-shadow: 0.5em 0.5em 0.5em rgb(255, 255, 255);*/
 }
 
 h1:hover{
     background-color: hsla(143, 83%, 14%, 0.234);
-    transform: scale(1.5);
-	transition: ease-in 2s;
+    /*transform: scale(1.5);*/
+	transition: ease-in 1s;
     color: #fff;
 }
 
@@ -57,7 +56,7 @@ a:hover{
 }
 
 /*navigation bar*/
-div.navbar{
+.navbar{
     position: fixed;
     top: 0;
     left: 0;
@@ -68,22 +67,22 @@ div.navbar{
     overflow: hidden;
 }
 
-div.navbar img{
+.navbar img{
     padding: 5px;
 }
 
-div.navbar ul{
+.navbar ul{
     display: inline-block;
     position: fixed;
     right: 20px;
 }
 
-div.navbar li{
+.navbar li{
     float: left;
     display: inline;
 }
 
-div.navbar li a{
+.navbar li a{
     display:block;
     font-weight: bold;
     padding: 8px 10px;
@@ -93,26 +92,23 @@ div.navbar li a{
 }
 
 
-div.navbar li a:hover {
+.navbar li a:hover {
     background-color: hsla(154, 37%, 22%, 0.234);
     transform: skew(10deg);
 }
 
 
-div.wrapper{
+.wrapper{
     /*background: url("../img/Mosope\ Onifade.png");*/
     top:50px;
 }
 
-/* Introduction */
-div.introduction h1{
-    width: 17%;
-    top: 100px;
-    right: 80%;
-    position: fixed;
+.visually-hidden {
+    opacity: 0;
 }
 
-div.intro {
+/*div bodies*/
+.intro, .hw, .portfolioBody, .contactinfo{
     display: none;
     background-color: hsla(109, 13%, 25%, 0.172);
     padding: 3%;
@@ -123,86 +119,93 @@ div.intro {
     bottom: 10%;
 }
 
-div.introduction h1:hover + div.intro{
+
+/* Introduction */
+div.introduction h1{
+    width: 17%;
+    top: 100px;
+    right: 80%;
+    position: fixed;
+}
+
+.intro::after{
+    display: none;
+}
+
+#introToggle:checked ~ .intro{
     display: block;
 }
 
+/* hover to display
+div.introduction h1:hover + div.intro{
+    display: block;
+}*/
+
 /* Assignemnt */
-div.Assignment h1{
+div.assignment h1{
     width: 17%;
     top: 100px;
     left: 80%;
     position: fixed;
 }
 
-div.Assignment ul{
+/*div.Assignment h1:hover + ul {
+    display: block;
+}*/
+
+.hw::after{
     display: none;
-    background-color: hsla(109, 13%, 25%, 0.172);
-    padding: 5%;
-    left: 23%;
-    right: 23%;
-    position: fixed;
-    top: 10%;
-    bottom: 10%;
 }
 
-
-div.Assignment h1:hover + ul {
+#hwToggle:checked ~ .hw{
     display: block;
 }
 
 /* Portfolio */
-div.Portfolio h1{
+div.portfolio h1{
     width: 15%;
     top: 200px;
     right: 80%;
     position: fixed;
+    cursor: pointer;
 }
 
-div.Portfolio ul{
+.portfolioBody::after{
     display: none;
-    background-color: hsla(109, 13%, 25%, 0.172);
-    padding: 5%;
-    left: 23%;
-    right: 23%;
-    position: fixed;
-    top: 10%;
-    bottom: 10%;
-    border-right: 5px solid #fff;
-    border-bottom: 3px solid #fff;
 }
 
-div.Portfolio li:first-child{
-    box-shadow: 5px 10px rgba(253, 255, 237, 0.521);
-}
-
-div.Portfolio h1:hover + ul {
+#portfolioToggle:checked ~ .portfolioBody{
     display: block;
 }
 
+/*div.Portfolio h1:hover + ul {
+    display: block;
+}*/
+.portfolio li:first-child{
+    box-shadow: 5px 10px rgba(253, 255, 237, 0.521);
+}
+
 /*Contact Information */
-div.Contact h1{
+.contact h1{
     margin:auto;
     width: 17%;
     left: 80%;
     top: 200px;
     position: fixed;
-    cursor: pointer;
-}
-div.contactinfo {
-    display: none;
-    background-color: hsla(109, 13%, 25%, 0.172);
-    padding: 5%;
-    left: 23%;
-    right: 23%;
-    position: fixed;
-    top: 10%;
-    bottom: 10%;
 }
 
-div.Contact h1:hover + .contactinfo{
+.contactinfo::after{
+    display: none;
+}
+
+#contactToggle:checked ~ .contactinfo{
     display: block;
 }
+
+/*
+div.Contact h1:hover + .contactinfo{
+    display: block;
+}*/
 
 /*Shedule */
 div.Schedule h1{

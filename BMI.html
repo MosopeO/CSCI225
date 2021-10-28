@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="css/BMI.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--Load jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <h1>BMI Calculator</h1>
+    <h5 id="welcomeMsg"></h5>
+    <div class="pt-5 container">
+        <div class="row">
+            <div class="col-6 ">
+                <form>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="Fname">First name: </label>
+                                    <input type="text" class="form-control" id="Fname" placeholder="Fname" name="Fname">
+                                </div>
+
+                                <div class="col">
+                                    <label for="Lname"> Last name: </label>
+                                    <input type="text" class="form-control" id="Lname" placeholder="Lname" name="Lname">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p> Choose your age group
+                            <select id="agegroup">
+                                <option> under 20 </option>
+                                <option> 21-30</option>
+                                <option> 31-40 </option>
+                                <option> >40</option>
+                            </select>
+                        </p>
+
+                        <small class="form-txt text-muted" id="reminder"> <p id="rlink"></p></small>
+
+                        <script>
+                           // document.getElementById("weight").addEventListener('click', percentilechart);
+
+                            function percentilechart(){
+                                
+                            }
+                        
+                        </script>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Enter your weight: </label>
+                        <input type="number" class="form-control" id="weight" placeholder="Pounds (lb)" name="weight">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="height">Enter your height: </label>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="number" class="form-control" id="feet" placeholder="Feet" name="height">
+                            </div>
+
+                            <div class="col">
+                                <input type="number" class="form-control" id="inches" placeholder="Inches"
+                                    name="height">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<button type="submit" id="button" class="btn btn-primary">Calculate BMI</button>-->
+                    <p><input type="button" id="button" value="Calculate BMI"></p>
+                </form>
+            </div>
+
+            <div class="col-6">
+                <div class="row">
+                    <img src="img/arrow.png" id = "arrow" alt="arrow" width="25" height="25">
+                </div>
+                <div class="row">
+                    <!--<img src="img/bmi-chart-thermo.png" alt="bmiScale" width="450" height="150">-->
+                    <img src="img/calculate-body-mass-index.jpg" alt="bmiScale">
+                </div>
+                <div class="row">
+                    <img src="img/Female_Mii.png" alt="mii" id="mii" width="200" height="200">
+                </div>
+                <div class="row">
+                    <h4>Your BMI: </h>
+                        <h4 id=result></h4>
+                </div>
+                <div class="row">
+                    <p id="reminder"> </p>
+                </div>
+            </div>
+
+            <script>
+                document.getElementById("button").addEventListener('click', calculateBMI, false)
+                document.getElementById("Fname").addEventListener('blur', displayMsg)
+
+                function displayMsg() {
+                    var name = document.getElementById("Fname").value
+                    document.getElementById("welcomeMsg").textContent = "Hi " + name.toString() + "! Thank you for using our BMI calculator"
+                }
+
+                function calculateBMI() {
+                    
+                    bmi = 0
+                    var feet = parseFloat(document.getElementById("feet").value)
+                    var inches = parseFloat(document.getElementById("inches").value)
+                    var height = (feet * 12) + inches
+
+                    var weight = parseInt(document.getElementById("weight").value)
+
+                    var agegroup = 0
+                    agegroup = document.getElementById("agegroup").selectedIndex
+
+                    if (agegroup == 0) {
+                        document.getElementById("reminder").innerHTML = 'Please use this <a href="https://www.cdc.gov/growthcharts/data/set1clinical/cj41l023.pdf">BMI percentile chart</a> to determine weight category';                        
+                    }
+
+                    bmi = (weight / height / height) * 730
+                    bmi = bmi.toPrecision(4)
+                    console.log("bmi=", bmi)
+
+
+                    if (bmi.toString() == "NaN") {
+                        window.alert("Please try again with differrent values")
+                    }
+                    else {
+                        moveRight(parseInt(bmi));
+                        changeImg(parseInt(bmi));
+                        document.getElementById("result").textContent = bmi.toString();
+                    
+
+                       // if (Math.round(bmi)>= 28){
+                        //    console.log(Math.round(bmi))
+                        //    window.alert("You are overweight!")
+                        //    window.open("http://www.nhlbi.nih.gov/health/public/heart/obesity/lose_wt/control.htm")
+                        //}
+                    }
+                }
+
+                function moveRight(n) {
+                    newx = 'translateX(' +(n*8)+'px)';
+                    console.log(newx);
+                    arrow = document.getElementById("arrow");
+                    arrow.animate([{transform: 'translateX(0px)'}, {transform: newx}], {duration: 2000, fill: "forwards"})
+                }
+
+                function changeImg(n){
+                    n = n/20;
+                    var newscale = 'scale('+ n + ', 1)';
+                    var  mii = document.getElementById("mii");
+                    mii.animate([{transform: 'scale(0.2,1)'}, {transform: newscale}], {duration: 2000, fill: "forwards"});
+                }
+            </script>
+        </div>
+    </div>
+
+
+</body>

@@ -1,0 +1,11 @@
+body{
+    background-image: url("../img/bck.jpg");
+}
+
+h1, h5{
+    text-align: center;
+}
+
+#mii{
+    align-content: center;
+}
