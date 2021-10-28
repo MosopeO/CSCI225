@@ -10,8 +10,7 @@
 
     <!--Load jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
-    crossorigin="anonymous"></script>
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -48,15 +47,17 @@
                             </select>
                         </p>
 
-                        <small class="form-txt text-muted" id="reminder"> <p id="rlink"></p></small>
+                        <small class="form-txt text-muted" id="reminder">
+                            <p id="rlink"></p>
+                        </small>
 
                         <script>
-                           // document.getElementById("weight").addEventListener('click', percentilechart);
+                            // document.getElementById("weight").addEventListener('click', percentilechart);
 
-                            function percentilechart(){
-                                
+                            function percentilechart() {
+
                             }
-                        
+
                         </script>
 
                     </div>
@@ -86,20 +87,22 @@
             </div>
 
             <div class="col-6">
+                <h4 id="resultHeading">Results </h4>
+
                 <div class="row">
-                    <img src="img/arrow.png" id = "arrow" alt="arrow" width="25" height="25">
+                    <input type="text" id="result" class="form-control" value="BMI" readonly />
+                </div>
+                <div class="row">
+                    <img src="img/arrow.png" id="arrow" alt="arrow" width="25" height="25">
                 </div>
                 <div class="row">
                     <!--<img src="img/bmi-chart-thermo.png" alt="bmiScale" width="450" height="150">-->
-                    <img src="img/calculate-body-mass-index.jpg" alt="bmiScale">
+                    <img src="img/calculate-body-mass-index.jpg" alt="bmiScale" width=500>
                 </div>
                 <div class="row">
                     <img src="img/Female_Mii.png" alt="mii" id="mii" width="200" height="200">
                 </div>
-                <div class="row">
-                    <h4>Your BMI: </h>
-                        <h4 id=result></h4>
-                </div>
+
                 <div class="row">
                     <p id="reminder"> </p>
                 </div>
@@ -115,7 +118,7 @@
                 }
 
                 function calculateBMI() {
-                    
+
                     bmi = 0
                     var feet = parseFloat(document.getElementById("feet").value)
                     var inches = parseFloat(document.getElementById("inches").value)
@@ -127,7 +130,7 @@
                     agegroup = document.getElementById("agegroup").selectedIndex
 
                     if (agegroup == 0) {
-                        document.getElementById("reminder").innerHTML = 'Please use this <a href="https://www.cdc.gov/growthcharts/data/set1clinical/cj41l023.pdf">BMI percentile chart</a> to determine weight category';                        
+                        document.getElementById("reminder").innerHTML = 'Please use this <a href="https://www.cdc.gov/growthcharts/data/set1clinical/cj41l023.pdf">BMI percentile chart</a> to determine weight category';
                     }
 
                     bmi = (weight / height / height) * 730
@@ -141,10 +144,10 @@
                     else {
                         moveRight(parseInt(bmi));
                         changeImg(parseInt(bmi));
-                        document.getElementById("result").textContent = bmi.toString();
-                    
+                        //document.getElementById("result").textContent = bmi.toString();
+                        document.getElementById("result").setAttribute("value", bmi)
 
-                       // if (Math.round(bmi)>= 28){
+                        // if (Math.round(bmi)>= 28){
                         //    console.log(Math.round(bmi))
                         //    window.alert("You are overweight!")
                         //    window.open("http://www.nhlbi.nih.gov/health/public/heart/obesity/lose_wt/control.htm")
@@ -153,17 +156,28 @@
                 }
 
                 function moveRight(n) {
-                    newx = 'translateX(' +(n*8)+'px)';
+                    if (n > 40){
+                        n = 40 
+                    }
+                    else if (n<18){
+                        n = 18
+                    }
+                    var NewValue = (((n - 18) * (40 - 18)) / (475 - 0)) + 0;
+                    console.log(NewValue* 475)
+                    newx = 'translateX(' + (NewValue*475) + 'px)';
                     console.log(newx);
                     arrow = document.getElementById("arrow");
-                    arrow.animate([{transform: 'translateX(0px)'}, {transform: newx}], {duration: 2000, fill: "forwards"})
+                    arrow.animate([{ transform: 'translateX(0px)' }, { transform: newx }], { duration: 2000, fill: "forwards" })
                 }
 
-                function changeImg(n){
-                    n = n/20;
-                    var newscale = 'scale('+ n + ', 1)';
-                    var  mii = document.getElementById("mii");
-                    mii.animate([{transform: 'scale(0.2,1)'}, {transform: newscale}], {duration: 2000, fill: "forwards"});
+                function changeImg(n) {
+                    if (n > 40){
+                        n = 40 
+                    }
+                    n = n / 20;
+                    var newscale = 'scale(' + n + ', 1)';
+                    var mii = document.getElementById("mii");
+                    mii.animate([{ transform: 'scale(0.2,1)' }, { transform: newscale }], { duration: 2000, fill: "forwards" });
                 }
             </script>
         </div>
