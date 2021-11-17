@@ -56,7 +56,6 @@
                     <div class="form-group row">
                         <label for="loanamt" class="col-xs-2 col-form-label">Start date: </label>
                         <select id="month" name="month">
-                            <option>month</option>
                             <option value="1">(01) January</option>
                             <option value="2">(02) February</option>
                             <option value="2">(03) March</option>
@@ -71,7 +70,6 @@
                             <option value="12">(12) December</option>
                         </select>
                         <select id="year" name="year">
-                            <option>year</option>
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
@@ -116,11 +114,11 @@
                     Interest Paid Per Month = Balance x  Monthly interest rate    
                     Principal Paid Per Month = Monthly Payment – Interest Paid Per Month */
 
-            var rate = parseFloat($("#rate").val());
-            var loanAmount = parseInt($("#loanamt").val());
-            var term =parseInt($("#term").val());
-            var startMonth = parseInt($("#month").val());
-            var startYear = parseInt($("#year").val());
+            var rate = 5.5;//parseFloat($("#rate").val());
+            var loanAmount = 150000;//parseInt($("#loanamt").val());
+            var term = 15;// parseInt($("#term").val());
+            var startMonth = 3;//parseInt($("#month").val());
+            var startYear = 2021;//parseInt($("#year").val());
             var monthlyInterest = ((rate / 12) / 100);
             var monthlyPayment = loanAmount * (monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, (term * 12) * -1));
 
@@ -134,6 +132,7 @@
             result += "</tr>";
 
             var balance = loanAmount;
+
 
             for (var i = 1; i <= term; i++) {
                 var monthlyInterestPaid = 0;
@@ -153,21 +152,23 @@
 
                     if ($("#sort").val() == "month") {
                         result += "<tr>";
-                        result += "<td>" + startMonth + "/" + startYear + "-" + startMonth + "/" + startYear + "</td>";
+                        result += "<td>" + startMonth + "/" + startYear + "-" + ++startMonth + "/" + startYear + "</td>";
                         result += "<td> $" + monthlyInterestPaid.toFixed(2) + "</td>";
                         result += "<td> $" + monthlyPrincipal.toFixed(2) + "</td>";
                         result += "<td> $" + balance.toFixed(2) + " </td>";
                         result += "</tr>";
                     }
+
                 }
 
-                result += "<tr>";
-                result += "<td>" + startMonth + "/" + startYear + "-" + startMonth + "/" + nextyr + "</td>";
-                result += "<td> $" + yearlyInterest.toFixed(2) + "</td>";
-                result += "<td> $" + yearlyPrincipal.toFixed(2) + "</td>";
-                result += "<td> $" + balance.toFixed(2) + " </td>";
-                result += "</tr>";
-
+                if ($("#sort").val() == "year") {
+                    result += "<tr>";
+                    result += "<td>" + startMonth + "/" + startYear + "-" + startMonth + "/" + nextyr + "</td>";
+                    result += "<td> $" + yearlyInterest.toFixed(2) + "</td>";
+                    result += "<td> $" + yearlyPrincipal.toFixed(2) + "</td>";
+                    result += "<td> $" + balance.toFixed(2) + " </td>";
+                    result += "</tr>";
+                }
                 startYear = nextyr;
             }
 
