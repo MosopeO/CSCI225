@@ -118,7 +118,7 @@
 
             var rate = parseFloat($("#rate").val());
             var loanAmount = parseInt($("#loanamt").val());
-            var term = parseInt($("#term").val());
+            var term =parseInt($("#term").val());
             var startMonth = parseInt($("#month").val());
             var startYear = parseInt($("#year").val());
             var monthlyInterest = ((rate / 12) / 100);
@@ -134,7 +134,6 @@
             result += "</tr>";
 
             var balance = loanAmount;
-
 
             for (var i = 1; i <= term; i++) {
                 var monthlyInterestPaid = 0;
@@ -154,15 +153,13 @@
 
                     if ($("#sort").val() == "month") {
                         result += "<tr>";
-                        result += "<td>" + startMonth + "/" + startYear + "-" + ++startMonth + "/" + startYear + "</td>";
+                        result += "<td>" + startMonth + "/" + startYear + "-" + startMonth + "/" + startYear + "</td>";
                         result += "<td> $" + monthlyInterestPaid.toFixed(2) + "</td>";
                         result += "<td> $" + monthlyPrincipal.toFixed(2) + "</td>";
                         result += "<td> $" + balance.toFixed(2) + " </td>";
                         result += "</tr>";
                     }
-
                 }
-
 
                 result += "<tr>";
                 result += "<td>" + startMonth + "/" + startYear + "-" + startMonth + "/" + nextyr + "</td>";
@@ -170,7 +167,6 @@
                 result += "<td> $" + yearlyPrincipal.toFixed(2) + "</td>";
                 result += "<td> $" + balance.toFixed(2) + " </td>";
                 result += "</tr>";
-
 
                 startYear = nextyr;
             }
