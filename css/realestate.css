@@ -1,0 +1,52 @@
+body{
+    background-image: url("../img/Estate.jpg");
+    background-size: 100%;
+}
+
+#container{
+    align-self: center;
+    align-content: center;
+}
+
+#loanform{
+    display: none;
+    background-color: rgba(172, 197, 209, 0.603);
+    width : 300px;
+    padding: 5px;
+    margin-top: 5%;
+}
+
+#label{
+    width: 100px;
+}
+
+.form-group, p {
+    font-size: small;   
+    font-weight: bold;
+}
+
+fieldset{
+    align-content: center;
+}
+
+#result{
+    display: none;
+    background-color: rgba(172, 197, 209, 0.603);
+    padding: 5px;
+    margin-top: 5%;
+    align-items: center;
+    border: 3px solid #000;
+    vertical-align: middle;
+}
+
+td{
+    padding: 5px;
+}
+
+td:first-child, th:first-child {
+    border-left: none;
+   }
+
+tr:last-child {
+    border-bottom: none;
+}

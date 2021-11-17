@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Real estate calculator</title>
+
+    <link rel="stylesheet" href="css/realestate.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Jquery library   ---->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-info">Buy</button>
+        <button type="button" class="btn btn-info">Sale</button>
+        <button type="button" class="btn btn-info" id="lbutton">Loan</button>
+        <button type="button" class="btn btn-info">About</button>
+    </div>
+
+    <div class="container" id="container">
+        <div class="container" id="loanform">
+            <form class="form-horizontal">
+
+                <fieldset class="border p-4">
+                    <legend class="w-auto">Loan Information</legend>
+                    <div class="form-group row">
+                        <label for="loanamt" class="col-xs-2">Loan Amount: </label>
+                        <div class="col-xs-2" id="label">
+                            <input type="number" class="form-control" id="loanamt">
+                        </div>
+                        $
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="loanamt" class="col-xs-2 col-form-label">Interest Rate: </label>
+                        <div class="col-xs-2" id="label">
+                            <input type="number" class="form-control" id="rate">
+                        </div>
+                        %
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="loanamt" class="col-xs-2 col-form-label">Loan Term: </label>
+                        <div class="col-xs-2" id="label">
+                            <input type="number" class="form-control" id="term">
+                        </div>
+                        Years
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="loanamt" class="col-xs-2 col-form-label">Start date: </label>
+                        <select id="month" name="month">
+                            <option>month</option>
+                            <option value="1">(01) January</option>
+                            <option value="2">(02) February</option>
+                            <option value="2">(03) March</option>
+                            <option value="4">(04) April</option>
+                            <option value="5">(05) May</option>
+                            <option value="6">(06) June</option>
+                            <option value="7">(07) July</option>
+                            <option value="7">(08) August</option>
+                            <option value="9">(09) September</option>
+                            <option value="10">(10) October</option>
+                            <option value="11">(11) November</option>
+                            <option value="12">(12) December</option>
+                        </select>
+                        <select id="year" name="year">
+                            <option>year</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+
+                        </select>
+                    </div>
+
+                    <p> Show results by:
+                        <select id="sort">
+                            <option> year</option>
+                            <option> month</option>
+                        </select>
+                    </p>
+
+                    <button type="submit" id="submit" class="btn btn-info">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+
+        <p id="monthlyPmt">
+
+        </p>
+
+        <div id="result">
+
+
+        </div>
+    </div>
+
+
+    <script>
+        $("#lbutton").click(function () {
+            var e = document.getElementById("loanform");
+            e.style.display = "block";
+        });
+
+        $("#submit").click(function () {
+
+            /*    Monthly interest rate =  Interest rate(annual) / 12     
+                    Monthly Payment =LoanAmount  × (M𝑜𝑛𝑡ℎ𝑙𝑦 𝑖𝑛𝑡𝑒𝑟𝑒𝑠𝑡 𝑟𝑎𝑡𝑒)/(1−(1+M𝑜𝑛𝑡ℎ𝑙𝑦 𝑖𝑛𝑡𝑒𝑟𝑒𝑠𝑡 𝑟𝑎𝑡𝑒)^(−𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑚𝑜𝑛𝑡ℎ))         
+                    Interest Paid Per Month = Balance x  Monthly interest rate    
+                    Principal Paid Per Month = Monthly Payment – Interest Paid Per Month */
+
+            var rate = parseFloat($("#rate").val());
+            var loanAmount = parseInt($("#loanamt").val());
+            var term = parseInt($("#term").val());
+            var startMonth = parseInt($("#month").val());
+            var startYear = parseInt($("#year").val());
+            var monthlyInterest = ((rate / 12) / 100);
+            var monthlyPayment = loanAmount * (monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, (term * 12) * -1));
+
+            var result = "";
+            result += "<table> ";
+            result += "<tr>";
+            result += "<th>Date</th>";
+            result += "<th>Interest</th>";
+            result += "<th>Principal</th>";
+            result += "<th>Balance</th>";
+            result += "</tr>";
+
+            var balance = loanAmount;
+
+
+            for (var i = 1; i <= term; i++) {
+                var monthlyInterestPaid = 0;
+                var monthlyPrincipal = 0;
+                var yearlyInterest = 0;
+                var yearlyPrincipal = 0;
+                var nextyr = startYear + 1;
+
+                for (var j = 1; j <= 12; j++) {
+                    monthlyInterestPaid = balance * monthlyInterest;
+                    yearlyInterest += monthlyInterestPaid;
+
+                    monthlyPrincipal = monthlyPayment - monthlyInterestPaid;
+                    yearlyPrincipal += monthlyPrincipal;
+
+                    balance = balance - monthlyPrincipal;
+
+                    if ($("#sort").val() == "month") {
+                        result += "<tr>";
+                        result += "<td>" + startMonth + "/" + startYear + "-" + ++startMonth + "/" + startYear + "</td>";
+                        result += "<td> $" + monthlyInterestPaid.toFixed(2) + "</td>";
+                        result += "<td> $" + monthlyPrincipal.toFixed(2) + "</td>";
+                        result += "<td> $" + balance.toFixed(2) + " </td>";
+                        result += "</tr>";
+                    }
+
+                }
+
+
+                result += "<tr>";
+                result += "<td>" + startMonth + "/" + startYear + "-" + startMonth + "/" + nextyr + "</td>";
+                result += "<td> $" + yearlyInterest.toFixed(2) + "</td>";
+                result += "<td> $" + yearlyPrincipal.toFixed(2) + "</td>";
+                result += "<td> $" + balance.toFixed(2) + " </td>";
+                result += "</tr>";
+
+
+                startYear = nextyr;
+            }
+
+            result += "</table>"
+
+            var z = document.getElementById("monthlyPmt");
+            z.textContent = "Monthly Payment: $" + monthlyPayment.toFixed(2);
+
+            document.getElementById("result").innerHTML = result;
+
+            var x = document.getElementById("loanform");
+            x.style.display = "none";
+
+            var y = document.getElementById("result");
+            y.style.display = "block";
+
+        });
+
+
+        function getMonthlyInterest(balance, rate) {
+            return balance * rate;
+        }
+    </script>
+</body>
+
+</html>
